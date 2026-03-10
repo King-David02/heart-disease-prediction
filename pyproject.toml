@@ -1,0 +1,7 @@
+[project]
+name = "heart-disease-prediction"
+version = "0.1.0"
+description = "An End-to-end ML pipeline predicting 10-year risk of coronary heart disease"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
