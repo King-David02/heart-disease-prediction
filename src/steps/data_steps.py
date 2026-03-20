@@ -1,8 +1,6 @@
 import pandas as pd
 from zenml import steps
-from src.data.ingestion import load_data
-from src.data.validation import data_validation
-from src.data.preprocessing import preprocessing
+from src.data import load_data, data_validation, data_preprocessing, feature_engineering
 from src.config import logger
 
 @steps
@@ -19,8 +17,9 @@ def data_validation_step(df: pd.DataFrame) -> pd.DataFrame:
 @steps
 def data_preprocessing_step(df: pd.DataFrame) -> pd.DataFrame:
     logger.info("ZenML step: Preprocessing data")
-    return preprocessing(df)
+    return data_preprocessing(df)
 
 @steps
 def feature_engineering(df: pd.DataFrame) -> pd.DataFrame:
     logger.info("ZenML step: Feature engineering")
+    return feature_engineering(df)

@@ -19,3 +19,5 @@ def feature_engineering(df: pd.DataFrame) -> pd.DataFrame:
     logger.debug(f"scaled {len(CONTINUOUS_COLS)} continuous columns")
     
     logger.info(f"Feature engineering complete, shape: {df.shape}")
+    
+    return df

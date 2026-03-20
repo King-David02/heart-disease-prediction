@@ -8,7 +8,7 @@ CONTINUOUS_COLS = [
 
 CATEGORICAL_COLS = ["education", "BPMeds"]
 
-def preprocessing(df: pd.DataFrame) -> pd.DataFrame:
+def data_preprocessing(df: pd.DataFrame) -> pd.DataFrame:
     logger.info("Preprocessing started")
     logger.info(f"Before preprocessing df shape is {df.shape}")
     
