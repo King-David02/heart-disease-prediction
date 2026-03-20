@@ -20,7 +20,7 @@ def data_validation(df: pd.DataFrame) -> bool:
         if null_count > 0:
             logger.warning(f"Columns {cols} has {null_count} null values")
             
-    if df.duplicated.sum() > 0:
+    if df.duplicated().sum() > 0:
         logger.warning(f"found {df.duplicated.sum()} duplicate rows")
         
     return True

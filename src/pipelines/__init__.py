@@ -1,0 +1,1 @@
+from src.pipelines.training_pipeline import train_pipeline

@@ -12,7 +12,7 @@ def logging_setup():
     )
     
     logger.add(
-        "logs/{name}/training/{time:YYYY-MM-DD}.log",
+        "logs/{time:YYYY-MM-DD}.log",
         format="{time:YYYY-MM-DD HH:mm:ss} | {level} | {name}:{line} - {message}",
         level="DEBUG",
         colorize=True,

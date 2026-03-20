@@ -1041,7 +1041,7 @@ wheels = [
 [[package]]
 name = "heart-disease-prediction"
 version = "0.1.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "evidently" },
     { name = "fastapi" },
