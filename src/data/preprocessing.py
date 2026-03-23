@@ -29,6 +29,7 @@ def data_preprocessing(df: pd.DataFrame) -> pd.DataFrame:
             mode = df[cols].mode()[0]
             df[cols].fillna(mode)
             logger.debug(f"{cols} missing values was replaced with {mode}")
-            
+    logger.info(f"Data shape: {df.shape}")        
+    df = df.dropna()
     logger.info(f"Final shape after preprocessing is {df.shape}")
     return df

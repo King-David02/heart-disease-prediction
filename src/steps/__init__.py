@@ -4,3 +4,4 @@ from src.steps.data_steps import (
     data_preprocessing_step,
     feature_engineering_step,
 )
+from src.steps.training_steps import train_model_step
