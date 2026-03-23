@@ -5,6 +5,7 @@ description = "An End-to-end ML pipeline predicting 10-year risk of coronary hea
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "dagshub>=0.6.8",
     "evidently>=0.7.20",
     "fastapi>=0.115.8",
     "loguru>=0.7.3",
