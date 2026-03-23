@@ -185,5 +185,4 @@ Each step is:
 ---
 
 <div align="center">
-<sub>Built with precision. Deployed with confidence.</sub>
 </div>
