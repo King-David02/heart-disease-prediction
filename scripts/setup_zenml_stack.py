@@ -1,5 +1,6 @@
 import subprocess
 import sys
+from src.config import settings
 
 def run(cmd):
     print(f"Running: {cmd}")
@@ -12,7 +13,14 @@ def setup():
     print("Setting up ZenML stack...")
 
     run("uv run zenml init")
-    run("uv run zenml experiment-tracker register mlflow_tracker --flavor=mlflow")
+    
+    run(
+    f"uv run zenml experiment-tracker register mlflow_tracker "
+    f"--flavor=mlflow --tracking_uri={settings.mlflow_tracking_uri} "
+    f"--tracking_username={settings.dagshub_username} "
+    f"--tracking_token={settings.dagshub_token}"
+)
+    
     run("uv run zenml artifact-store register local_store --flavor=local")
     run("uv run zenml orchestrator register local_orchestrator --flavor=local")
     run("uv run zenml model-registry register mlflow_registry --flavor=mlflow")

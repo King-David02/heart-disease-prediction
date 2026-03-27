@@ -6,7 +6,7 @@ echo "Setting up Heart Disease Prediction Project...."
 echo "Installing ZenML integrations..."
 uv run zenml integration install mlflow sklearn --uv -y
 
-if [! -f .env]; then
+if [ ! -f .env]; then
     cp .env.example .env
     echo ".env File Created"
 else

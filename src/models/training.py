@@ -1,14 +1,20 @@
 import os
 import pandas as pd
 import mlflow
+import dagshub
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score, roc_auc_score, confusion_matrix, classification_report, f1_score
 from src.models.base import BaseModel
-from src.config import logger
+from src.config import logger, settings
 
 class LogisticRegressionModel(BaseModel):
+    
+    os.environ["MLFLOW_TRACKING_USERNAME"] = settings.dagshub_username
+    os.environ["MLFLOW_TRACKING_PASSWORD"] = settings.dagshub_token
+
+    mlflow.set_tracking_uri(settings.mlflow_tracking_uri)
     
     def __init__(self):
         self.model = LogisticRegression(max_iter=1000, random_state=42)
@@ -64,6 +70,8 @@ def train_model(df: pd.DataFrame) -> tuple:
     X = df.drop(columns=["TenYearCHD"])
     y = df["TenYearCHD"]
     
+    dagshub.init(repo_owner='King-David02', repo_name='heart-disease-prediction', mlflow=True)
+    mlflow.set_experiment("heart-disease-prediction")
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     model = LogisticRegressionModel()
     model.train(X_train, y_train)
