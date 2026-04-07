@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     mlflow_tracking_uri: str = ""
     dagshub_username: str = ""
     dagshub_token: str = ""
+    repo_name: str = ""
     raw_data_path: str = str(BASE_DIR / "data" / "raw" / "framingham.csv")
     processed_data_path: str = str(BASE_DIR / "data" / "processed")
     

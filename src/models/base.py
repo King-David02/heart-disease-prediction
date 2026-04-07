@@ -10,7 +10,3 @@ class BaseModel(ABC):
     @abstractmethod
     def predict(self, X: pd.DataFrame) -> pd.Series:
         pass
-    
-    @abstractmethod
-    def evaluate(self, X_test: pd.DataFrame, y_test: pd.Series) -> dict:
-        pass
