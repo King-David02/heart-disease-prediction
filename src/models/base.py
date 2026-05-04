@@ -10,3 +10,7 @@ class BaseModel(ABC):
     @abstractmethod
     def predict(self, X: pd.DataFrame) -> pd.Series:
         pass
+    
+    @abstractmethod
+    def predict_proba(self, X_test: pd.DataFrame):
+        pass

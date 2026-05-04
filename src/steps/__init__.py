@@ -5,4 +5,5 @@ from src.steps.data_steps import (
     feature_engineering_step,
 )
 from src.steps.training_steps import train_model_step
-from src.steps.evaluation_steps import evaluation_step #register_model_step
+from src.steps.evaluation_steps import evaluation_step
+from src.steps.promote_model_steps import promote_model_step

@@ -1,5 +1,6 @@
 import subprocess
 import sys
+from src.config import settings
 
 def run(cmd):
     print(f"Running: {cmd}")
@@ -13,7 +14,7 @@ def setup():
 
     run("uv run zenml init")
     run("uv run zenml experiment-tracker register mlflow_tracker --flavor=mlflow")
-    run("uv run zenml artifact-store register local_store --flavor=local")
+    run("uv run zenml artifact-store register local_store --flavor=local --path=/home/king-david/Desktop/ML/Projects/heart-disease-prediction/local_stores")
     run("uv run zenml orchestrator register local_orchestrator --flavor=local")
     run("uv run zenml model-registry register mlflow_registry --flavor=mlflow")
     run("uv run zenml stack register ml_stack -o local_orchestrator -a local_store -e mlflow_tracker -r mlflow_registry")

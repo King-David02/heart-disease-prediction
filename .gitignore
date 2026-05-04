@@ -220,6 +220,8 @@ __marimo__/
 
 # MLflow
 mlruns/
+local_stores/
+evaluation/
 
 # Data — never commit raw data
 data/raw/*
@@ -233,6 +235,7 @@ models/experiments/*
 models/staging/*
 models/production/*
 !models/**/.gitkeep
+mlflow.db
 
 # Environment
 .env

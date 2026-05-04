@@ -8,6 +8,7 @@ dependencies = [
     "dagshub>=0.6.8",
     "evidently>=0.7.20",
     "fastapi>=0.115.8",
+    "lightgbm>=4.6.0",
     "loguru>=0.7.3",
     "mlflow>=3.10.1",
     "numpy>=2.4.3",
@@ -19,6 +20,7 @@ dependencies = [
     "pyyaml>=6.0.3",
     "scikit-learn>=1.8.0",
     "uvicorn[standard]>=0.41.0",
+    "xgboost>=3.2.0",
     "zenml[server]>=0.92.0",
 ]
 

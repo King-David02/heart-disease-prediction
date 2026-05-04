@@ -14,6 +14,10 @@ class Settings(BaseSettings):
     raw_data_path: str = str(BASE_DIR / "data" / "raw" / "framingham.csv")
     processed_data_path: str = str(BASE_DIR / "data" / "processed")
     
+    api_secret_key: str = "dev-secret-key"
+    api_host: str = "0.0.0.0"
+    api_port: int = 8000
+        
     class Config:
         env_file = str(BASE_DIR / ".env")
         env_file_encoding = "utf-8" 

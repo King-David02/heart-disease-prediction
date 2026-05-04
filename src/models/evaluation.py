@@ -1,5 +1,6 @@
 import os
 import mlflow
+import pandas as pd
 import dagshub
 from sklearn.metrics import (
     accuracy_score,
@@ -14,7 +15,7 @@ from src.config import logger, settings
 
 def evaluate(model, X_test, y_test):
     logger.info("Evaluating Model")
-    #mlflow.set_tracking_uri(settings.mlflow_tracking_uri)
+        
     predictions = model.predict(X_test)
     metrics = {
         "test_accuracy": accuracy_score(y_test, predictions),
