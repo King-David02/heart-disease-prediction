@@ -19,5 +19,6 @@ class PatientData(BaseModel):
 
 class PredictionResponse(BaseModel):
     prediction: int = Field(..., description="1 = high risk, 0 = low risk")
+    latency: float
     # probability: float = Field(..., description="Probability of heart disease")
     # risk_level: str = Field(..., description="Low, Medium or High")

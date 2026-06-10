@@ -1,7 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import Response
 from src.api.routes import router
 from src.api.middleware import log_requests
+from prometheus_client import generate_latest, CONTENT_TYPE_LATEST
 
 app = FastAPI(
     title="Heart Disease Prediction API",
@@ -26,3 +28,7 @@ def root():
     "docs": "/docs",
     "health": "/api/v1/health"
 }
+    
+@app.get("/metrics")
+def metrics():
+    return Response(generate_latest(), media_type=CONTENT_TYPE_LATEST)

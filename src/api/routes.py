@@ -1,8 +1,9 @@
+import time
 import pandas as pd
-import mlflow
 from fastapi import APIRouter, HTTPException
 from src.api.schemas import PatientData, PredictionResponse
 from src.models import load_model, run_inference
+from src.monitoring.metrics import record_prediction
 from src.config import logger, settings
 
 router = APIRouter()
@@ -20,6 +21,7 @@ def health_check():
 
 @router.post("/predict", response_model=PredictionResponse)
 def predict(patient: PatientData):
+    start = time.time()
     if model is None:
         raise HTTPException(status_code=503, detail="Model is not loaded")
     
@@ -28,6 +30,7 @@ def predict(patient: PatientData):
         data["pulBP"] = data["sysBP"] - data["diaBP"]
         
         predictions = run_inference(model, data)
+        latency = time.time() - start
         prediction = int(predictions[0])
         # probability =float(model.predict_proba(data)[0][1])
         
@@ -42,8 +45,10 @@ def predict(patient: PatientData):
             
         # logger.info(f"prediction: {prediction}, probability: {probability:.4f}")
         
+        record_prediction(prediction, latency)
         return PredictionResponse(
             prediction=prediction,
+            latency=latency
             # probability=round(probability, 4),
             # risk_level=risk_level
         )
